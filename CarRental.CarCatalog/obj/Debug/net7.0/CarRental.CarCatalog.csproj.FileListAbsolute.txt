@@ -1,0 +1,15 @@
+D:\repos\github\CarRental\CarRental.CarCatalog\bin\Debug\net7.0\CarRental.CarCatalog.deps.json
+D:\repos\github\CarRental\CarRental.CarCatalog\bin\Debug\net7.0\CarRental.CarCatalog.dll
+D:\repos\github\CarRental\CarRental.CarCatalog\bin\Debug\net7.0\CarRental.CarCatalog.pdb
+D:\repos\github\CarRental\CarRental.CarCatalog\bin\Debug\net7.0\CarRental.BuildingBlocks.dll
+D:\repos\github\CarRental\CarRental.CarCatalog\bin\Debug\net7.0\CarRental.BuildingBlocks.pdb
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\CarRental.CarCatalog.csproj.AssemblyReference.cache
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\CarRental.CarCatalog.GeneratedMSBuildEditorConfig.editorconfig
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\CarRental.CarCatalog.AssemblyInfoInputs.cache
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\CarRental.CarCatalog.AssemblyInfo.cs
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\CarRental.CarCatalog.csproj.CoreCompileInputs.cache
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\CarRental.CarCatalog.csproj.CopyComplete
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\CarRental.CarCatalog.dll
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\refint\CarRental.CarCatalog.dll
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\CarRental.CarCatalog.pdb
+D:\repos\github\CarRental\CarRental.CarCatalog\obj\Debug\net7.0\ref\CarRental.CarCatalog.dll

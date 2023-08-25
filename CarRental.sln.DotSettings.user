@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=036e6871_002D6555_002D48f4_002Da9c3_002D3d157f3c32cd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;CarRental.HR.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Project Location="D:\repos\github\CarRental\CarRental.HR.Tests" Presentation="&amp;lt;CarRental.HR.Tests&amp;gt;" /&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::1BD2373B-8FBD-449E-9896-9A8AD34EADAC::net7.0::CarRental.CarCatalog.Tests.CarServiceIntegrationTests.Add&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::1BD2373B-8FBD-449E-9896-9A8AD34EADAC::net7.0::CarRental.CarCatalog.Tests.CarServiceIntegrationTests.Update&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::1BD2373B-8FBD-449E-9896-9A8AD34EADAC::net7.0::CarRental.CarCatalog.Tests.CarServiceIntegrationTests&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

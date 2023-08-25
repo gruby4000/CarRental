@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "9OKLP389XfOfGtCaXeh9dGljjDwAJ+J4bScT47HkJSM=",
+  "Source": "CarRental.Sales.API",
+  "BasePath": "_content/CarRental.Sales.API",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

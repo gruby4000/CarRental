@@ -1,0 +1,12 @@
+D:\repos\github\CarRental\CarRental.Sales.API\out\CarRental.Sales.API.exe
+D:\repos\github\CarRental\CarRental.Sales.API\out\appsettings.Development.json
+D:\repos\github\CarRental\CarRental.Sales.API\out\appsettings.json
+D:\repos\github\CarRental\CarRental.Sales.API\out\CarRental.Sales.API.dll
+D:\repos\github\CarRental\CarRental.Sales.API\out\CarRental.Sales.API.deps.json
+D:\repos\github\CarRental\CarRental.Sales.API\out\CarRental.Sales.API.runtimeconfig.json
+D:\repos\github\CarRental\CarRental.Sales.API\out\CarRental.Sales.API.pdb
+D:\repos\github\CarRental\CarRental.Sales.API\out\Microsoft.AspNetCore.OpenApi.dll
+D:\repos\github\CarRental\CarRental.Sales.API\out\Microsoft.OpenApi.dll
+D:\repos\github\CarRental\CarRental.Sales.API\out\Swashbuckle.AspNetCore.Swagger.dll
+D:\repos\github\CarRental\CarRental.Sales.API\out\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\repos\github\CarRental\CarRental.Sales.API\out\Swashbuckle.AspNetCore.SwaggerUI.dll
