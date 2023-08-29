@@ -21,5 +21,6 @@ public record CarRentOnSideProcessStarted: IEvent
     public required ClientAgreements ClientAgreements { get; init; }
     public Guid CorrelationId { get; } = new Guid();
     public DateTime Timestamp { get; } = DateTime.Now;
+    public string EventName => nameof(CarRentOnSideProcessStarted);
     public string Type { get; } = nameof(CarRentOnSideProcessStarted);
 }

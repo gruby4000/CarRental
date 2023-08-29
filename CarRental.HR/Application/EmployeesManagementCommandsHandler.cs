@@ -9,7 +9,7 @@ using ManagerAggregate = CarRental.HR.Model.Manager;
 
 namespace CarRental.HR.Application;
 
-public sealed class EmployeesManagementCommandsHandler
+public sealed class EmployeesManagementCommandsHandler: IEmployeesManagementCommandsHandler
 {
     private readonly IAgreementCatalogRepository _agreementCatalogRepository;
     private readonly IManagerRepository _managerRepository;

@@ -6,7 +6,7 @@ using CarRental.Sales.Model;
 
 namespace CarRental.Sales.Application;
 
-public class RentalCommandsHandler
+public class RentalCommandsHandler: IRentalCommandHandler
 {
     private readonly IRentalRepository _rentalRepository;
     private readonly IEventBus _eventBus;
@@ -54,7 +54,7 @@ public class RentalCommandsHandler
         
         await _rentalRepository.UnitOfWork.SaveChangesAsync();
         
-        _eventBus.AddEventToPublish(new CarRentOnSideProcessStarted
+        _eventBus.Publish(new CarRentOnSideProcessStarted
         {
             FirstName = command.FirstName,
             LastName = command.LastName,

@@ -5,13 +5,13 @@ using RabbitMQ.Client;
 
 namespace CarRental.BuildingBlocks.ServiceIntegration.RabbitMQ;
 
-public sealed class RabbitMQConnectionFactory
+public sealed class RabbitMqConnectionFactory
 {
-    private readonly RabbitMQOptions _config;
+    private readonly RabbitMqOptions _config;
     
-    public RabbitMQConnectionFactory(IOptions<RabbitMQOptions> config)
+    public RabbitMqConnectionFactory(RabbitMqOptions config)
     {
-        _config = config.Value;
+        _config = config;
     }
 
     public IConnection CreateConnection()

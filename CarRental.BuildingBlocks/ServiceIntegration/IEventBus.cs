@@ -1,11 +1,9 @@
 ﻿namespace CarRental.BuildingBlocks.ServiceIntegration;
 
-public interface IEventBus
+public interface IEventBus: IDisposable
 {
-    Task PublishAllAsync(string routingKey = null!);
-    Task PublishSpecificEventAsync(IEvent @event, string routingKey = null!);
-    void AddEventToPublish(IEvent @event);
-    void SubscribeEvent(IEvent @event);
-    void UnsubscribeEvent(IEvent @event);
-    
+    void PublishAll(params IEvent[] events);
+    void Publish(IEvent @event);
+    void Subscribe(IEventConsumer<IEvent> eventName);
+    void Unsubscribe(string eventName);
 }

@@ -1,3 +1,4 @@
+using CarRental.Sales.Application;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRental.Sales.API.Controllers;
@@ -8,10 +9,12 @@ public class RentalController : ControllerBase
 {
   
     private readonly ILogger<RentalController> _logger;
+    private readonly IRentalCommandHandler _commandHandler;
 
-    public RentalController(ILogger<RentalController> logger)
+    public RentalController(ILogger<RentalController> logger, IRentalCommandHandler commandHandler)
     {
         _logger = logger;
+        _commandHandler = commandHandler;
     }
 
     // [HttpGet(Name = "GetWeatherForecast")]
