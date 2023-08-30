@@ -120,3 +120,12 @@ D:\repos\github\CarRental\CarRental.CarCatalog.Tests\obj\Debug\net7.0\CarRental.
 D:\repos\github\CarRental\CarRental.CarCatalog.Tests\obj\Debug\net7.0\CarRental.CarCatalog.Tests.genruntimeconfig.cache
 D:\repos\github\CarRental\CarRental.CarCatalog.Tests\obj\Debug\net7.0\ref\CarRental.CarCatalog.Tests.dll
 D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
+D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\MassTransit.dll
+D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\MassTransit.Abstractions.dll
+D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\MassTransit.RabbitMqTransport.dll
+D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\repos\github\CarRental\CarRental.CarCatalog.Tests\bin\Debug\net7.0\RabbitMQ.Client.dll

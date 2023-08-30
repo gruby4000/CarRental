@@ -1,11 +1,9 @@
 ﻿using CarRental.BuildingBlocks.DDD;
-using CarRental.BuildingBlocks.ErrorNotification;
-using CarRental.BuildingBlocks.Validation;
 using CarRental.HR.Model;
 
-namespace CarRental.Sales.Model;
+namespace CarRental.ClientsCatalog.Model;
 
-public record Client: IValidatable, INotificationProducer<DomainError>
+public class Client: Entity
 {
     public required string FirstName { get; init; }
     public required string LastName { get; init; }
@@ -14,11 +12,9 @@ public record Client: IValidatable, INotificationProducer<DomainError>
     public string? CompanyName { get; init; }
     public Address? CompanyAddress { get; init; }
     public string? CompanyTaxId { get; init; }
-    public Notification<DomainError> Notification { get; } = new();
-
-    public bool IsCompany => !string.IsNullOrEmpty(CompanyName);
     
-    public bool Validate()
+    
+    public override bool Validate()
     {
         if (!string.IsNullOrEmpty(CompanyName) || !string.IsNullOrEmpty(CompanyTaxId) || CompanyAddress is not null)
         {
@@ -31,12 +27,10 @@ public record Client: IValidatable, INotificationProducer<DomainError>
         {
             Notification.AddError(new() { Message = "Personal data of responsible person must be provided", Source = nameof(Client)});
         }
-
+        
         if(string.IsNullOrEmpty(IdNumber))
             Notification.AddError(new() {Message = "Id number is required", Source = nameof(Client)});
         
         return !Notification.HasErrors;
     }
-
-    
 }

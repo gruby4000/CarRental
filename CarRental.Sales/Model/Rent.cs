@@ -40,6 +40,18 @@ public class Rent: Entity
 
     public override bool Validate()
     {
-        throw new NotImplementedException();
+        if(Start >= End)
+            Notification.AddError(new() {Message = "Rent dates are incorrect", Source = nameof(Rent)});
+
+        if(!Client.Validate())
+            Notification.AddErrors(Client.Notification.Errors);
+        
+        if(!Car.Validate())
+            Notification.AddErrors(Car.Notification.Errors);
+        
+        if(string.IsNullOrEmpty(RentNumber))
+            Notification.AddError(new() {Message = "RentNumber can't be a null", Source = nameof(Rent)});
+        
+        return !Notification.HasErrors;
     }
 }
