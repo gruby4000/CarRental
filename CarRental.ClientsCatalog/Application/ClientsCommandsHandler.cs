@@ -1,7 +1,9 @@
 ﻿using System.Text.Json;
+using CarRental.BuildingBlocks.DDD;
 using CarRental.ClientsCatalog.Application.Queries;
 using CarRental.ClientsCatalog.Infrastructure;
 using CarRental.ClientsCatalog.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRental.ClientsCatalog.Application;
 
@@ -12,15 +14,5 @@ public sealed class ClientsCommandsHandler
     public ClientsCommandsHandler(ClientsContext ctx)
     {
         _ctx = ctx;
-    }
-    
-    public Task<(bool Exist, Client Value)> CheckIfClientExistAsync(string idNumber)
-    {
-        throw new NotImplementedException();
-    }
-    
-    public Task<(bool Exist, Client Value)> CheckIfCompanyClientExistAsync(string companyTaxId)
-    {
-        throw new NotImplementedException();
     }
 }

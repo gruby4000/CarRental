@@ -8,13 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Infrastructure\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\CarRental.BuildingBlocks\CarRental.BuildingBlocks.csproj" />
       <ProjectReference Include="..\CarRental.HR\CarRental.HR.csproj" />
     </ItemGroup>
+
 
 
 </Project>
