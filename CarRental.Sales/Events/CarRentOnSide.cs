@@ -7,6 +7,7 @@ public record CarRentOnSide: DomainEvent
 {
     public required string FirstName { get; init; }
     public required string LastName { get; init; }
+    public required string RentNumber { get; init; }
     public required Address CorrespondencyAddress { get; init; }
     public required string IdNumber { get; init; }
     public string? CompanyName { get; init; }

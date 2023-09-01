@@ -2,6 +2,7 @@
 using CarRental.BuildingBlocks.ServiceIntegration;
 using CarRental.Sales.Application.Commands;
 using CarRental.Sales.Application.IntegrationEvents;
+using CarRental.Sales.Application.Sagas.CarRentProcess;
 using CarRental.Sales.Model;
 
 namespace CarRental.Sales.Application;
@@ -10,11 +11,13 @@ public class RentalCommandsHandler: IRentalCommandHandler
 {
     private readonly IRentalRepository _rentalRepository;
     private readonly IEventBus _eventBus;
+    private readonly CarRentProcessSagaManager _carRentProcessSagaManager;
 
-    public RentalCommandsHandler(IRentalRepository rentalRepository, IEventBus eventBus)
+    public RentalCommandsHandler(IRentalRepository rentalRepository, IEventBus eventBus, CarRentProcessSagaManager carRentProcessSagaManager)
     {
         _rentalRepository = rentalRepository;
         _eventBus = eventBus;
+        _carRentProcessSagaManager = carRentProcessSagaManager;
     }
 
     public async Task RentACar(RentACar command)
@@ -30,7 +33,7 @@ public class RentalCommandsHandler: IRentalCommandHandler
         if (rentalEmployee is null)
             throw new ArgumentException("Employee was not found");
 
-        var client = new Client() //change it to getting data from ClientsService
+        var client = new Client()
         {
             FirstName = command.FirstName,
             LastName = command.LastName,
@@ -38,10 +41,10 @@ public class RentalCommandsHandler: IRentalCommandHandler
             CompanyTaxId = command.CompanyTaxId,
             CorrespondencyAddress = command.CorrespondencyAddress,
             CompanyAddress = command.CompanyAddress,
-            IdNumber = command.ClientIdentifier
+            IdNumber = command.IdNumber
         };
         
-        rental.RentingACar(
+        var rentNumber = rental.RentingACar(
             rentalEmployee,
             command.CarNumber,
             client,
@@ -53,11 +56,15 @@ public class RentalCommandsHandler: IRentalCommandHandler
             throw new DomainException(rental.Notification);
         
         await _rentalRepository.UnitOfWork.SaveChangesAsync();
+
+        var correlationId = Guid.NewGuid();
+        _carRentProcessSagaManager.Start(rentNumber, correlationId);
         
         _eventBus.Publish(new CarRentOnSideProcessStarted
         {
             FirstName = command.FirstName,
             LastName = command.LastName,
+            RentNumber = rentNumber,
             CorrespondencyAddress = command.CorrespondencyAddress,
             IdNumber = command.IdNumber,
             CompanyName = command.CompanyName ,
@@ -68,7 +75,8 @@ public class RentalCommandsHandler: IRentalCommandHandler
             Start = command.Start,
             End = command.End,
             CarNumber = command.CarNumber,
-            ClientAgreements = null! // toDo
+            ClientAgreements = null!, // toDo,
+            CorrelationId = correlationId
         });
     }
 }

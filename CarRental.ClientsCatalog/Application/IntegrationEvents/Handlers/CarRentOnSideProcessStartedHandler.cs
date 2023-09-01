@@ -1,5 +1,6 @@
 ﻿using CarRental.BuildingBlocks.DDD;
 using CarRental.BuildingBlocks.ServiceIntegration;
+using CarRental.ClientsCatalog.Application.Commands;
 
 namespace CarRental.ClientsCatalog.Application.IntegrationEvents.Handlers;
 
@@ -21,7 +22,7 @@ public class CarRentOnSideProcessStartedHandler
     {
         try
         {
-            if (@event.CompanyTaxId is not null)
+            if (@event.IsCompany)
                 await HandleCompanyClient(@event);
             await HandleClient(@event);
         }
@@ -34,43 +35,56 @@ public class CarRentOnSideProcessStartedHandler
     private async Task HandleClient(CarRentOnSideProcessStarted @event)
     {
         var client = await _queriesHandler.GetIfClientExistAsync(@event.IdNumber);
-
+        var correlationId = @event.CorrelationId;
 
         if (client.Exist)
         {
-            _eventBus.Publish(new ClientChecked() { ClientId = client.Client.Id });
+            _eventBus.Publish(new ClientChecked() { ClientId = client.Client.Id, RentNumber = @event.RentNumber, CorrelationId = @correlationId });
         }
         else
         {
             var createClientCommand = new CreateClient()
             {
-
+                FirstName = @event.FirstName,
+                LastName = @event.LastName,
+                CompanyName = @event.CompanyName,
+                CompanyTaxId = @event.CompanyTaxId,
+                CorrespondencyAddress = @event.CorrespondencyAddress,
+                CompanyAddress = @event.CompanyAddress,
+                IdNumber = @event.IdNumber
             };
 
-            await _commandsHandler.CreateClient(createClientCommand);
+            await _commandsHandler.CreateClientAsync(createClientCommand);
             var createdClient = await _queriesHandler.GetIfCompanyClientExistAsync(@event.IdNumber);
-            _eventBus.Publish(new ClientChecked() { ClientId = createdCompanyClient.Client.Id });
+            _eventBus.Publish(new ClientChecked() { ClientId = createdClient.Client.Id, RentNumber = @event.RentNumber, CorrelationId = correlationId });
         }
     }
     private async Task HandleCompanyClient(CarRentOnSideProcessStarted @event)
     {
+        var correlationId = @event.CorrelationId;
         var companyClient = await _queriesHandler.GetIfCompanyClientExistAsync(@event.CompanyTaxId);
 
         if (companyClient.Exist)
         {
-            _eventBus.Publish(new ClientChecked() { ClientId = companyClient.Client.Id });
+            _eventBus.Publish(new ClientChecked() { ClientId = companyClient.Client.Id, RentNumber = @event.RentNumber, CorrelationId = correlationId});
         }
         else
         {
-            var createClientCommand = new CreateClient()
+            var createClientCommand = new CreateClient
             {
-
+                FirstName = @event.FirstName,
+                LastName = @event.LastName,
+                CorrespondencyAddress = @event.CorrespondencyAddress,
+                IdNumber = @event.IdNumber,
+                CompanyTaxId = @event.CompanyTaxId,
+                CompanyAddress = @event.CompanyAddress,
+                CompanyName = @event.CompanyName
             };
 
-            await _commandsHandler.CreateClient(createClientCommand);
+            await _commandsHandler.CreateClientAsync(createClientCommand);
             var createdCompanyClient = await _queriesHandler.GetIfCompanyClientExistAsync(@event.CompanyTaxId);
                 
-            _eventBus.Publish(new ClientChecked() { ClientId = createdCompanyClient.Client.Id });
+            _eventBus.Publish(new ClientChecked() { ClientId = createdCompanyClient.Client.Id, RentNumber = @event.RentNumber, CorrelationId = correlationId });
         }
     }
 }

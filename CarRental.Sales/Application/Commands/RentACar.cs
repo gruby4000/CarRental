@@ -15,6 +15,5 @@ public record RentACar(
     DateTime End,
     string RentalIdentifier,
     string RentalEmployeeFirstName,
-    string RentalEmployeeLastName,
-    string ClientIdentifier
+    string RentalEmployeeLastName
     );

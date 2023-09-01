@@ -41,7 +41,7 @@ public class Rental: AggregateRoot
 
     public required HashSet<Car> CarsAvailableOnSide { get; init; }
 
-    public void RentingACar(RentalEmployee employee, int carNumber, Client client, DateTime start, DateTime end)
+    public string RentingACar(RentalEmployee employee, int carNumber, Client client, DateTime start, DateTime end)
     {
         if (!employee.Validate()) Notification.AddErrors(employee.Notification.Errors);;
         
@@ -57,9 +57,12 @@ public class Rental: AggregateRoot
         if (Notification.HasErrors) throw new DomainException(Notification);
         
         CarsAvailableOnSide.Remove(car);
+
+        string rentNumber = GenerateRentNumber();
         
         Events.Add(new CarRentOnSide
         {
+            RentNumber = rentNumber,
             FirstName = client.FirstName,
             LastName = client.LastName,
             CorrespondencyAddress = client.CorrespondencyAddress,
@@ -70,7 +73,7 @@ public class Rental: AggregateRoot
             End = end,
             CarNumber = car.CarNumber
         });
-        
+        return rentNumber;
     }
     
     public override bool Validate()
@@ -85,5 +88,10 @@ public class Rental: AggregateRoot
             Notification.AddErrors(OfficeAddress.Notification.Errors);
             
         return !Notification.HasErrors;
+    }
+
+    private string GenerateRentNumber()
+    {
+        return Guid.NewGuid().ToString().Replace("-", "");
     }
 }

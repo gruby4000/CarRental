@@ -8,6 +8,7 @@ public record CarRentOnSideProcessStarted: IEvent
 {
     public required string FirstName { get; init; }
     public required string LastName { get; init; }
+    public required string RentNumber { get; init; }
     public required Address CorrespondencyAddress { get; init; }
     public required string IdNumber { get; init; }
     public string? CompanyName { get; init; }
@@ -19,8 +20,8 @@ public record CarRentOnSideProcessStarted: IEvent
     public required DateTime End { get; init; }
     public int CarNumber { get; init; }
     public required ClientAgreements ClientAgreements { get; init; }
-    public Guid CorrelationId { get; } = new Guid();
-    public DateTime Timestamp { get; } = DateTime.Now;
+    public Guid CorrelationId { get; set; } = new Guid();
+    public DateTime Timestamp { get; set; } = DateTime.Now;
     public string EventName => nameof(CarRentOnSideProcessStarted);
     public string Type { get; } = nameof(CarRentOnSideProcessStarted);
 }
